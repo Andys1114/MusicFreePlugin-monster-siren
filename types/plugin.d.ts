@@ -210,6 +210,7 @@ declare namespace IPlugin {
     cacheControl?: "cache" | "no-cache" | "no-store";
     /** 部分场景下的提示文本 */
     hints?: Record<"importMusicSheet" | "importMusicItem", string[]>;
+    userVariables?: Array<{ key: string; title?:string}>;
     /** 搜索函数 */
     search?: ISearchFunc;
     /** 获取根据音乐信息获取url */
