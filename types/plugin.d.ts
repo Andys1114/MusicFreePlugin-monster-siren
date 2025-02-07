@@ -181,6 +181,11 @@ declare namespace IPlugin {
      */
     version?: string;
     /**
+     * 插件作者
+     * @example lingdianshiren
+     */
+    author?: string;
+    /**
      * 远程更新的url
      *
      * app内点击【更新插件】时，会从此链接获取最新插件
