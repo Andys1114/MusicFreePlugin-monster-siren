@@ -33,9 +33,9 @@ const search = async function (
           const albumDetail = await getAlbumDetail(album.cid);
 
           // 生成musicList
-          const musicList = await Promise.all(
-            albumDetail.songs.map(async (song) => {
-              const songDetail = await getSongDetail(song.cid);
+          var musicList = [];
+          var songPromises = albumDetail.songs.map(function (song) {
+            return getSongDetail(song.cid).then(function (songDetail) {
               return {
                 platform: "塞壬唱片",
                 id: songDetail.cid,
@@ -45,16 +45,23 @@ const search = async function (
                 artwork: album.coverUrl,
                 url: songDetail.sourceUrl,
                 lrc: songDetail.lyricUrl
-              } as IMusic.IMusicItem;
-            })
-          );
+              };
+            });
+          });
+
+          Promise.all(songPromises).then(function (results) {
+            musicList = results;
+            // 在这里处理 musicList
+          }).catch(function (error) {
+            console.error("Error processing song details:", error);
+          });
 
           albumData.push(
             {
               platform: "塞壬唱片",
               id: album.cid,
               title: album.name,
-              artist: album.artistes?.join("/") || "",
+              artist: album.artistes.join("/"),
               artwork: album.coverUrl,
               musicList
             })
