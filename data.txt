@@ -143,3 +143,77 @@ https://monster-siren.hypergryph.com/api/song/232249
     ]
   }
 }
+
+
+
+{
+  "result": {
+    "songs": [
+      {
+        "id": 1973113851,
+        "name": "冲破穹顶",
+        "artists": [
+          {
+            "id": 32540734,
+            "name": "塞壬唱片-MSR",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "fansGroup": null,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 298817,
+            "name": "PMP",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "fansGroup": null,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 149886070,
+          "name": "理想城：长夏狂欢季OST",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "fansGroup": null,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1660838400000,
+          "size": 4,
+          "copyrightId": 1416293,
+          "status": 1,
+          "picId": 109951167790744130,
+          "mark": 0
+        },
+        "duration": 184421,
+        "copyrightId": 1416293,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 17716879360
+      }
+    ],
+    "hasMore": false,
+    "songCount": 26
+  },
+  "code": 200
+}

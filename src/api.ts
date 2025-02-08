@@ -58,7 +58,7 @@ interface SongDetail {
 /**
  * 获取所有专辑列表
  */
-async function getAllAlbums(): Promise<Album[]> {
+export async function getAllAlbums(): Promise<Album[]> {
     const response = await axios.get<BaseResponse<Album[]>>(
         'https://monster-siren.hypergryph.com/api/albums'
     );
@@ -71,7 +71,7 @@ async function getAllAlbums(): Promise<Album[]> {
  * 获取专辑详细信息
  * @param cid 专辑ID
  */
-async function getAlbumDetail(cid: string): Promise<AlbumDetail> {
+export async function getAlbumDetail(cid: string): Promise<AlbumDetail> {
     const response = await axios.get<BaseResponse<AlbumDetail>>(
         `https://monster-siren.hypergryph.com/api/album/${cid}/detail`
     );
@@ -83,7 +83,7 @@ async function getAlbumDetail(cid: string): Promise<AlbumDetail> {
 /**
  * 获取所有歌曲列表
  */
-async function getAllSongs(): Promise<{ list: Song[]; autoplay: string }> {
+export async function getAllSongs(): Promise<{ list: Song[]; autoplay: string }> {
     const response = await axios.get<BaseResponse<{ list: Song[]; autoplay: string }>>(
         'https://monster-siren.hypergryph.com/api/songs'
     );
@@ -96,13 +96,14 @@ async function getAllSongs(): Promise<{ list: Song[]; autoplay: string }> {
  * 搜索专辑
  * @param keyword 搜索关键词
  */
-async function searchAlbums(keyword: string): Promise<{ list: SearchAlbumResult[]; end: boolean }> {
+export async function searchAlbums(keyword: string): Promise<{ list: SearchAlbumResult[]; end: boolean }> {
     const response = await axios.get<BaseResponse<{ list: SearchAlbumResult[]; end: boolean }>>(
         'https://monster-siren.hypergryph.com/api/search/album',
         { params: { keyword } }
     );
 
     handleResponse(response);
+    
     return response.data.data;
 }
 
@@ -110,7 +111,7 @@ async function searchAlbums(keyword: string): Promise<{ list: SearchAlbumResult[
  * 获取歌曲详细信息
  * @param cid 歌曲ID
  */
-async function getSongDetail(cid: string): Promise<SongDetail> {
+export async function getSongDetail(cid: string): Promise<SongDetail> {
     const response = await axios.get<BaseResponse<SongDetail>>(
         `https://monster-siren.hypergryph.com/api/song/${cid}`
     );
@@ -152,5 +153,3 @@ async function main() {
         console.error('Request failed:', error instanceof Error ? error.message : error);
     }
 }
-
-export default main;
