@@ -28,33 +28,25 @@ const search = async function (
       const albumRes = await searchAlbums(query);
       const albumData: IAlbum.IAlbumItem[] = [];
       for (const album of albumRes.list) {
-        if (album.name.includes(query)) {
+        if (album.name.toLowerCase().includes(query.toLowerCase())) {
           // 获取专辑详情
           const albumDetail = await getAlbumDetail(album.cid);
 
           // 生成musicList
-          var musicList = [];
-          var songPromises = albumDetail.songs.map(function (song) {
-            return getSongDetail(song.cid).then(function (songDetail) {
-              return {
-                platform: "塞壬唱片",
-                id: songDetail.cid,
-                artist: songDetail.artists.join("/"),
-                title: songDetail.name,
-                album: album.name,
-                artwork: album.coverUrl,
-                url: songDetail.sourceUrl,
-                lrc: songDetail.lyricUrl
-              };
-            });
-          });
-
-          Promise.all(songPromises).then(function (results) {
-            musicList = results;
-            // 在这里处理 musicList
-          }).catch(function (error) {
-            console.error("Error processing song details:", error);
-          });
+          var musicList:IMusic.IMusicItem[] = [];
+          for (const song of albumDetail.songs) {
+            const songRes = await getSongDetail(song.cid);
+            musicList.push({
+              platform: "塞壬唱片",
+              id: song.cid,
+              artist: song.artistes.join("/"),
+              title: song.name,
+              album: album.name,
+              artwork: album.coverUrl,
+              url: songRes.sourceUrl,
+              lrc:songRes.lyricUrl
+            })
+          }
 
           albumData.push(
             {
@@ -78,8 +70,8 @@ const search = async function (
 
         for (const song of albumDetail.songs) {
           if (
-            song.name.includes(query)
-            || song.artistes.some(artist => artist.includes(query))
+            song.name.toLowerCase().includes(query.toLowerCase())
+            || song.artistes.some(artist => artist.toLowerCase().includes(query.toLowerCase()))
           ) {
             const songDetail = await getSongDetail(song.cid);
             // console.log(songDetail);

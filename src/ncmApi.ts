@@ -98,17 +98,25 @@ export async function getNCMSonglyric(
         if (
             song.name == musicItem.title
             && song.album.name == musicItem.album
-            && song.artists.some(artist => artist.name.includes(musicItem.artist.split("/").shift()))
+            && song.artists.some(artist => {
+                return artist.name.toLowerCase().includes(
+                    musicItem.artist.split("/").shift().toLowerCase()
+                )
+            })
         ) {
             id = song.id;
-            console.log(
-                "ncm name   " + song.album.name + "\n",
-                "siren name " + musicItem.album + "\n",
-                `ncm art\n`,
-                // song.artists,
-                "\nsiren art  " + musicItem.artist.split("/").shift() + "\n",
-                song.artists.some(artist => artist.name.includes(musicItem.artist.split("/").shift()))
-            );
+            // console.log(
+            //     "ncm name   " + song.album.name + "\n",
+            //     "siren name " + musicItem.album + "\n",
+            //     `ncm art\n`,
+            //     // song.artists,
+            //     "\nsiren art  " + musicItem.artist.split("/").shift() + "\n",
+            //     song.artists.some(artist => {
+            //         return artist.name.toLowerCase().includes(
+            //             musicItem.artist.split("/").shift().toLowerCase()
+            //         )
+            //     })
+            // );
 
         }
     })
