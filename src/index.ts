@@ -123,9 +123,10 @@ const getLyric = async function (
 const pluginInstance: IPlugin.IPluginDefine = {
   platform: "塞壬唱片",
   author: "零点诗人",
-  version: "0.0.1",
+  version: "0.0.4",
   cacheControl: "no-cache",
   supportedSearchType: ['album', 'music'],
+  srcUrl:"https://lingdianshiren.xyz/shuyuan/MusicFreePluginMonsterSiren.js",
   // TODO: 在这里把插件剩余的功能补充完整
   search,
   getLyric
