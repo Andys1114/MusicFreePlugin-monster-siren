@@ -22,6 +22,7 @@
     "cheerio": "^1.0.0-rc.12",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.4",
+    "halo-static-pages-deploy-cli": "^1.0.0",
     "he": "^1.2.0",
     "qs": "^6.11.0"
   },
