@@ -20,6 +20,11 @@ jobs:
         run: npm run build
       - name: Rname file
         run: mv ./dist/plugin.js ./dist/MusicFreePluginMonsterSiren.js
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MusicFreePluginMonsterSiren.js
+          path: dist/MusicFreePluginMonsterSiren.js
       - name: Deploy to Halo # 关键步骤
         run: |
-          npx halo-static-pages-deploy-cli deploy -e ${{ secrets.ENDPOINT }} -i ${{ secrets.ID }} -t ${{ secrets.PAT }} -f dist
+          npx halo-static-pages-deploy-cli deploy -e ${{ secrets.ENDPOINT }} -i ${{ secrets.ID }} -t ${{ secrets.PAT }} -f dist/MusicFreePluginMonsterSiren.js
